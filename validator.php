@@ -2,7 +2,7 @@
 function validate_form() {
 	$errors = array();
 	$glass = array("Cocktail Glass","Old Fashioned Glass","Highball Glass","Collins Glass","Shot Glass");
-	$unit = array("cl","Dashes","Splashes","Whole");
+	$unit = array("cl","Dashes","Splashes","Whole","Drops");
 
 	//Check if ct_name is valid through Regex
 	if (!preg_match('[^[A-Za-z0-9 .\'?!]{3,35}$]', $_POST['ct_name'])) {

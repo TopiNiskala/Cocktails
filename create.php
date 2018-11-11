@@ -191,6 +191,7 @@
 								<option value="Dashes">Dash</option>
 								<option value="Splashes">Splash</option>
 								<option value="Whole">Whole (ex. Eggwhite)</option>
+								<option value="Drops">Drop</option>
 							</select>
 						</div>
 					</div>
