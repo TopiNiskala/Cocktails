@@ -34,4 +34,23 @@ function process_list() {
 	$stmt = $cocktail->read();
 	return $stmt;
 }
+
+function process_delete($del_id) {
+	require_once __DIR__ . "/config/database.php";
+	require_once __DIR__ . "/object/cocktail.php";
+	$database = new Database();
+	$db = $database->getConnection();
+	$cocktail = new Cocktail($db);
+	print "TESTI: " . $del_id;
+	if ($cocktail->delete($del_id)) {
+		echo '{';
+			echo '"Message": "Cocktail was deleted."';
+		echo '}';
+	} else {
+		echo '{';
+			echo '"Message": "Unable to delete cocktail."';
+		echo '}';
+	}
+	header("Location: list.php");
+}
 ?>

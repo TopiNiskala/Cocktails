@@ -19,7 +19,7 @@ function validate_form() {
 		if (!preg_match('[^[A-Za-z0-9 .\'?!]{3,35}$]', $_POST['ct_garnish'])) {
 			$errors["garnish_not_valid"] = "Cocktail garnish must be between 3 and 35 length and cannot contain special characters apart from (.'?!)";
 		}
-	} 
+	}
 
 	//Check if URL is a correct image url
 	if ($_POST['ct_image'] != "" || $_POST['ct_image'] != NULL) {

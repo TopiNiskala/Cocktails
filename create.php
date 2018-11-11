@@ -170,7 +170,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="submit"></label>
 						<div class="col-sm-10">
-							<input type="submit" name="submit" value="Submit">
+							<input class="btn btn-success" type="submit" name="submit" value="Submit">
 						</div>
 					</div>
 				</form>
@@ -204,7 +204,7 @@
 						</div>
 					</div>
 				</div>
-				<button name="add_ingredient" onclick="ingredient()">Add Ingredient</button>
+				<button class="btn btn-secondary" name="add_ingredient" onclick="ingredient()">Add Ingredient</button>
 <?php
 	build_footer();
 ?>

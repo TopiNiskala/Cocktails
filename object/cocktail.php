@@ -52,10 +52,10 @@ class Cocktail {
 		return false;
 	}
 
-	function delete() {
+	function delete($del_id) {
 		$sql = "DELETE FROM cocktail WHERE ct_id=:ct_id";
 		$stmt = $this->conn->prepare($sql);
-		$stmt->bindValue(':ct_id', $this->ct_id);
+		$stmt->bindValue(':ct_id', $del_id);
 		if ($stmt->execute()) {
 			return true;
 		}
