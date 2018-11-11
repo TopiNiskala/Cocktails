@@ -55,7 +55,7 @@
 			<div class="container.fluid">
 				<h3>Insert your own cocktails to the list</h3>
 				<p>Here you can fill in the basic info of your new cocktail recepy.<br><br></p>
-				<form class="form-horizontal" method="POST" action="" style="margin-right:30%">
+				<form class="form-horizontal" method="POST" style="margin-right:30%">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="ct_name">Name: </label>
 						<div class="col-sm-10">
@@ -72,7 +72,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="ct_glass">Glass: </label>
 						<div class="col-sm-10">
-							<select name="ct_glass" class="form-control">
+							<select name="ct_glass" class="form-control" id="ct_glass">
 								<?php
 									foreach ($glass as $option => $label) {
 										print "\t\t\t\t\t\t\t\t\t<option value='" . $option . "'";
@@ -132,7 +132,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="ingredient_list">List of Ingredients (Add with the second form below):</label>
+						<label class="control-label col-sm-2" for="ct_ingredients">List of Ingredients (Add with the second form below):</label>
 						<div class="col-sm-10">
 							<select name="ct_ingredients[]" id="ct_ingredients" multiple>
 								<?php
@@ -170,7 +170,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="submit"></label>
 						<div class="col-sm-10">
-							<input class="btn btn-success" type="submit" name="submit" value="Submit">
+							<input class="btn btn-success" type="submit" name="submit" value="Submit" id="submit">
 						</div>
 					</div>
 				</form>
@@ -204,7 +204,7 @@
 						</div>
 					</div>
 				</div>
-				<button class="btn btn-secondary" name="add_ingredient" onclick="ingredient()">Add Ingredient</button>
+				<button class="btn btn-success" name="add_ingredient" onclick="ingredient()">Add Ingredient</button>
 <?php
 	build_footer();
 ?>
@@ -227,3 +227,5 @@
 		document.getElementById("ct_ingredients").appendChild(opt);
 	}
 </script>
+</body>
+</html>

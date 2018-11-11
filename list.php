@@ -25,7 +25,7 @@
 		print "\t\t\t\t\t\t<div id='collapse" . $list['ct_id'] . "' class='panel-collapse collapse'>\n";
 		print "\t\t\t\t\t\t\t<div class='panel-body'>\n";
 		print "\t\t\t\t\t\t\t\t<ul class='list-group' style='list-style-type:square;'>\n";
-		print "\t\t\t\t\t\t\t\t\t<li class='list-group-item' style='list-style-type:none;'><img src=" . $list['ct_image'] . "></li>\n";
+		print "\t\t\t\t\t\t\t\t\t<li class='list-group-item' style='list-style-type:none;'><img alt='Image of a cocktail.' src=" . $list['ct_image'] . "></li>\n";
 		print "\t\t\t\t\t\t\t\t\t<li class='list-group-item'><p>Name: " . $list['ct_name'] . "</p></li>\n";
 		print "\t\t\t\t\t\t\t\t\t<li class='list-group-item'><p>Glass: " . $list['ct_glass'] . "</p></li>\n";
 		print "\t\t\t\t\t\t\t\t\t<li class='list-group-item'><p>Garnish: " . $list['ct_garnish'] . "</p></li>\n";
@@ -41,7 +41,7 @@
 		}
 		print "</ul>\n\t\t\t\t\t\t\t\t\t<li class='list-group-item'><p>Preparation: " . $list['ct_preparation'] . "</p></li>\n";
 		print "\t\t\t\t\t\t\t\t</ul>\n";
-		print "\t\t\t\t\t\t\t\t<form class='form-vertical' method='POST' action=''>\n";
+		print "\t\t\t\t\t\t\t\t<form class='form-vertical' method='POST'>\n";
 		print "\t\t\t\t\t\t\t\t\t<input type='text' style='display:none;' name='ct_id' value='" . $list['ct_id'] . "'>\n";
 		print "\t\t\t\t\t\t\t\t\t<input type='submit' class='btn btn-danger' name='submit' value='Delete'>\n";
 		print "\t\t\t\t\t\t\t\t</form>\n";
@@ -54,3 +54,5 @@
 <?php
 	build_footer();
 ?>
+</body>
+</html>

@@ -27,6 +27,7 @@ function build_header($this_site) {
 	print "\t<link rel='stylesheet' type='text/css' href='css/style.css'>\n";
 	print "\t<script src='js/jquery-3.3.1.min.js'></script>\n";
 	print "\t<script src='js/bootstrap.min.js'></script>\n";
+	print "\t<script src='js/top.js'></script>\n";
 	print "</head>\n";
 	print "<body style='background-color:#000000'>\n";
 	print "\t<div class='container' style='background-color:white;'>\n";
@@ -62,8 +63,5 @@ function build_footer() {
 	print "\t\t</footer>\n";
 	print "\t</div>\n";
 	print "<button onclick='topFunction()' id='myBtn' title='Go to top'>Top</button>\n";
-	print "<script src='js/top.js'></script>\n";
-	print "</body>\n";
-	print "</html>";
 }
 ?>
