@@ -9,20 +9,21 @@ class Cocktail {
 	public $ct_garnish;
 	public $ct_image;
 	public $ct_preparation;
-	public $ct_ingredients = array();
+	public $ct_ingredients;
 
 	public function __construct($db) {
 		$this->conn = $db;
 	}
 
 	function create() {
-		$sql = "INSERT INTO cocktail (ct_name, ct_glass, ct_garnish, ct_image, ct_preparation) VALUES (:ct_name, :ct_glass, :ct_garnish, :ct_image, :ct_preparation);";
+		$sql = "INSERT INTO cocktail (ct_name, ct_glass, ct_garnish, ct_image, ct_preparation, ct_ingredients) VALUES (:ct_name, :ct_glass, :ct_garnish, :ct_image, :ct_preparation, :ct_ingredients)";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindValue(':ct_name', $this->ct_name);
 		$stmt->bindValue(':ct_glass', $this->ct_glass);
 		$stmt->bindValue(':ct_garnish', $this->ct_garnish);
 		$stmt->bindValue(':ct_image', $this->ct_image);
 		$stmt->bindValue(':ct_preparation', $this->ct_preparation);
+		$stmt->bindValue(':ct_ingredients', $this->ct_ingredients);
 		if ($stmt->execute()) {
 			return true;
 		}
@@ -30,10 +31,11 @@ class Cocktail {
 	}
 
 	function read() {
-		$sql = "SELECT * FROM cocktail ORDER BY ct_name DESC";
+		$sql = "SELECT * FROM cocktail ORDER BY ct_name ASC";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
-		return stmt;
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
 	}
 
 	function update() {
