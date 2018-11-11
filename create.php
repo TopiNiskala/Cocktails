@@ -8,7 +8,14 @@
 			'Old Fashioned Glass' => 'Old Fashioned Glass',
 			'Highball Glass' => 'Highball Glass',
 			'Collins Glass' => 'Collins Glass',
-			'Shot Glass' => 'Shot Glass'
+			'Shot Glass' => 'Shot Glass',
+			'Champagne Flute' => 'Champagne Flute',
+			'Irish Coffee Mug' => 'Irish Coffee Mug',
+			'Wine Glass' => 'Wine Glass',
+			'Margarita Glass' => 'Margarita Glass',
+			'Copper Mug' => 'Copper Mug',
+			'Poco' => 'Poco',
+			'Hurricane Glass' => 'Hurricane Glass'
 	);
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -72,7 +79,7 @@
 										if ($option == $defaults['ct_glass']) {
 											print " selected";
 										}
-										print "> $label</option>\n";	
+										print "> $label</option>\n";
 									}
 								?>
 							</select>
@@ -125,7 +132,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="ingredient_list">List of Ingredients:</label>
+						<label class="control-label col-sm-2" for="ingredient_list">List of Ingredients (Add with the second form below):</label>
 						<div class="col-sm-10">
 							<select name="ct_ingredients[]" id="ct_ingredients" multiple>
 								<?php
@@ -192,6 +199,7 @@
 								<option value="Splashes">Splash</option>
 								<option value="Whole">Whole (ex. Eggwhite)</option>
 								<option value="Drops">Drop</option>
+								<option value="Teaspoons">Teaspoon</option>
 							</select>
 						</div>
 					</div>

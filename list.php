@@ -7,7 +7,7 @@
 ?>
 			<div class="container.fluid">
 				<h3>List of saved cocktails</h3>
-				<p>Click on the titles of the cocktails to see more info...
+				<p>Click on the titles of the cocktails to see more info...<br><br>
 <?php
 	$cocktails = process_list();
 	foreach ($cocktails as $list) {
