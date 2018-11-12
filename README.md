@@ -1,6 +1,6 @@
 # Cocktails
-PHP tutorial program. List and create cocktails with PHP and databases.
-TEST URL: <a href="http://topiniskala.com/~topi/php/index.php">http://topiniskala.com/~topi/php/index.php</a>
+PHP tutorial program. List and create cocktails with PHP and databases.<br>
+TEST URL: <a href="http://topiniskala.com/~topi/php/index.php">http://topiniskala.com/~topi/php/index.php</a><br>
 To successfully install this program on your server do following:
 
   1) Change your own database credentials to the <code>config/database.php</code> file.
