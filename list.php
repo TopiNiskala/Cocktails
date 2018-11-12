@@ -53,7 +53,7 @@
 			print "\t\t\t\t</div>\n";
 		}
 	} else {
-		for ($a = 0; $a < 20; $a++) {
+		for ($a = 0; $a < 22; $a++) {
 			print "<br>";
 		}
 	}
