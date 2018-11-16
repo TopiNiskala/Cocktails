@@ -25,10 +25,10 @@
 					<li class='list-group-item'>Listpage where you can list cocktails from the database.</li>
 					<li class='list-group-item'>Possibility to delete cocktails from the list.</li>
 					<li class='list-group-item'>SESSION implemented and basic cocktail glass added next to cocktail-pdo class.</li>
+					<li class='list-group-item'>Cancel button for new cocktails.</li>
 				</ul>
 				<h5>List of to-do parts: </h5>
 				<ul>
-					<li class='list-group-item'>Cancel button for new cocktails.</li>
 					<li class='list-group-item'>New page for editing/updating cocktail data. (and move delete button there)</li>
 					<li class='list-group-item'>Login, register, cookies. Possibly with pure PHP or with a framework like PHP-Auth.</li>
 					<li class='list-group-item'>Separate database for each user with possibility to add IBA official list to user accounts database.</li>

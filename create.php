@@ -24,6 +24,11 @@
 	);
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if (isset($_POST['cancel'])) {
+			unset($_SESSION['cocktail']);
+			$_POST = array();
+			header("Location: create.php");
+		}
 		if ($form_errors = validate_form()) {
 			$this_site = "create";
 			build_header($this_site);
@@ -153,7 +158,7 @@
 							<select name="ct_ingredients[]" id="ct_ingredients" multiple>
 								<?php
 									foreach ($default_ingredients as $option => $label) {
-										print "\t\t\t\t\t\t\t\t\t<option value='" . $option . "'>" . $label . "</option>\n";	
+										print "\t\t\t\t\t\t\t\t\t<option value='" . $option . "'>" . $label . "</option>\n";
 									}
 								?>
 							</select>
@@ -187,6 +192,7 @@
 						<label class="control-label col-sm-2" for="submit"></label>
 						<div class="col-sm-10">
 							<input class="btn btn-success" type="submit" name="submit" value="Submit" id="submit">
+							<input class="btn btn-danger" type="submit" name="cancel" value="Cancel" id="cancel">
 						</div>
 					</div>
 				</form>
