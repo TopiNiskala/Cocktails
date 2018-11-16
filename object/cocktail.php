@@ -11,7 +11,8 @@ class Cocktail {
 	public $ct_preparation;
 	public $ct_ingredients;
 
-	public function __construct($ct_name = "", $ct_glass = "", $ct_garnish = "", $ct_image = "", $ct_preparation = "", $ct_ingredients = array()) {
+	public function __construct($ct_id = 0, $ct_name = "", $ct_glass = "", $ct_garnish = "", $ct_image = "", $ct_preparation = "", $ct_ingredients = array()) {
+		$this->ct_id = $ct_id;
 		$this->ct_name = $ct_name;
 		$this->ct_glass = $ct_glass;
 		$this->ct_garnish = $ct_garnish;

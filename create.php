@@ -24,33 +24,42 @@
 	);
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		printf($_POST['ct_name']);
 		if (isset($_POST['cancel'])) {
 			unset($_SESSION['cocktail']);
 			$_POST = array();
 			header("Location: create.php");
-		}
-		if ($form_errors = validate_form()) {
-			$this_site = "create";
-			build_header($this_site);
-			$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
-			$_SESSION['cocktail'] = $cocktail;
-			if (isset($cocktail->ct_ingredients)) {
-				foreach ($cocktail->ct_ingredients as $value) {
-					$ing_array = explode(",",$value);
-					if ($ing_array[2] == "cl") {
-						$value2 = $ing_array[0] . " " . $ing_array[1] . $ing_array[2];
-					} else {
-						$value2 = $ing_array[0] . " " . $ing_array[1] . " " . $ing_array[2];
-					}
-					$default_ingredients[$value] = $value2;
-				}
-			}
+			exit();
 		} else {
-			$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
-			$_SESSION['cocktail'] = $cocktail;
-			process_form($cocktail);
+			unset($_POST['cancel']);
+			if ($form_errors = validate_form()) {
+				$this_site = "create";
+				build_header($this_site);
+				if (isset($_POST['ct_ingredients'])) {
+					$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
+				} else {
+					$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation']);
+				}
+				$_SESSION['cocktail'] = $cocktail;
+				if (isset($cocktail->ct_ingredients)) {
+					foreach ($cocktail->ct_ingredients as $value) {
+						$ing_array = explode(",",$value);
+						if ($ing_array[2] == "cl") {
+							$value2 = $ing_array[0] . " " . $ing_array[1] . $ing_array[2];
+						} else {
+							$value2 = $ing_array[0] . " " . $ing_array[1] . " " . $ing_array[2];
+						}
+						$default_ingredients[$value] = $value2;
+					}
+				}
+			} else {
+				$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
+				$_SESSION['cocktail'] = $cocktail;
+				process_form($cocktail);
+			}
 		}
 	} else {
+		unset($_POST['cancel']);
 		$this_site = "create";
 		build_header($this_site);
 		if (isset($_SESSION['cocktail'])) {

@@ -16,7 +16,7 @@
 <?php
 	$cocktails = process_list();
 	foreach ($cocktails as $list) {
-		$cocktail = new Cocktail($list['ct_name'], $list['ct_glass'], $list['ct_garnish'], $list['ct_image'], $list['ct_preparation'], $list['ct_ingredients']);
+		$cocktail = new Cocktail($list['ct_id'], $list['ct_name'], $list['ct_glass'], $list['ct_garnish'], $list['ct_image'], $list['ct_preparation'], $list['ct_ingredients']);
 		print "\t\t\t\t<div class='panel-group'>\n";
 		print "\t\t\t\t\t<div class='panel panel-default'>\n";
 		print "\t\t\t\t\t\t<div class='panel-heading'>\n";
