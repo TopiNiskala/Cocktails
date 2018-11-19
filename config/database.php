@@ -1,5 +1,9 @@
 <?php
-//Class for the database connection
+
+//***********************************
+//*Class for the database connection*
+//***********************************
+
 class Database {
 	//Credentials as variables
 	private $host = "localhost";
