@@ -1,5 +1,9 @@
 <?php
-//Cocktail class. No getters or setters as at least for no I have no use for them thanks to ->
+
+//****************
+//*Cocktail class*
+//****************
+
 class Cocktail {
 	
 	//Variables
@@ -21,5 +25,7 @@ class Cocktail {
 		$this->ct_preparation = $ct_preparation;
 		$this->ct_ingredients = $ct_ingredients;
 	}
+	
+	//No getters or setters as at least for no I have no use for them thanks to ->
 }
 ?>
