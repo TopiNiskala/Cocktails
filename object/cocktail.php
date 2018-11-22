@@ -1,9 +1,5 @@
 <?php
 
-class Cocktail {
-	private $conn;
-	private $table_name = "cocktail";
-
 //****************
 //*Cocktail class*
 //****************
