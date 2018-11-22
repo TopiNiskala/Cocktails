@@ -35,9 +35,9 @@
 				$this_site = "create";
 				build_header($this_site);
 				if (isset($_POST['ct_ingredients'])) {
-					$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
+					$cocktail = new Cocktail(0, $_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
 				} else {
-					$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation']);
+					$cocktail = new Cocktail(0, $_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation']);
 				}
 				$_SESSION['cocktail'] = $cocktail;
 				if (isset($cocktail->ct_ingredients)) {
@@ -52,7 +52,11 @@
 					}
 				}
 			} else {
-				$cocktail = new Cocktail($_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
+				if (isset($_POST['ct_ingredients'])) {
+					$cocktail = new Cocktail(0, $_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation'], $_POST['ct_ingredients']);
+				} else {
+					$cocktail = new Cocktail(0, $_POST['ct_name'], $_POST['ct_glass'], $_POST['ct_garnish'], $_POST['ct_image'], $_POST['ct_preparation']);
+				}
 				$_SESSION['cocktail'] = $cocktail;
 				process_form($cocktail);
 			}
