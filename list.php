@@ -45,7 +45,7 @@
 		print "\t\t\t\t\t\t\t\t</ul>\n";
 		print "\t\t\t\t\t\t\t\t<form class='form-vertical' method='POST'>\n";
 		print "\t\t\t\t\t\t\t\t\t<input type='text' style='display:none;' name='ct_id' value='" . $cocktail->ct_id . "'>\n";
-		print "\t\t\t\t\t\t\t\t\t<input type='submit' class='btn btn-danger' name='submit' value='Delete'>\n";
+		print "\t\t\t\t\t\t\t\t\t<input type='submit' class='btn btn-primary' name='update' value='Update'> <input type='submit' class='btn btn-danger' name='submit' value='Delete'>\n";
 		print "\t\t\t\t\t\t\t\t</form>\n";
 		print "\t\t\t\t\t\t\t</div>\n";
 		print "\t\t\t\t\t\t</div>\n";

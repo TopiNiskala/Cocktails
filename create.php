@@ -24,7 +24,6 @@
 	);
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		printf($_POST['ct_name']);
 		if (isset($_POST['cancel'])) {
 			unset($_SESSION['cocktail']);
 			$_POST = array();
