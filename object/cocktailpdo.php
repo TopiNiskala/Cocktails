@@ -1,5 +1,4 @@
 <?php
-class CocktailPDO {
 
 //*********************************
 //*PDO database class for Cocktail*
