@@ -19,7 +19,7 @@ class UserPDO {
 		$this->conn = $db;
 	}
 
-	//Add a single cocktail to the database.
+	//Add a single user to the database.
 	function create_user() {
 		$sql = "INSERT INTO user (usr_name, usr_password, usr_email) VALUES (:usr_name, :usr_password, :usr_email)";
 		$stmt = $this->conn->prepare($sql);
@@ -30,6 +30,15 @@ class UserPDO {
 			return true;
 		}
 		return false;
+	}
+
+	//Fetch a single user from the database.
+	function read_users() {
+		$sql = "SELECT * FROM user";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute();
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
 	}
 }
 ?>
