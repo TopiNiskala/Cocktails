@@ -7,19 +7,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if ($form_errors = login_user()) {
 		$user = new User(0, "", $_POST['usr_password'], $_POST['usr_email']);
 	} else {
-		ini_set('session.gc_maxlifetime',86400);
+		if (isset($_POST['rememberme'])) {
+			if ($_POST['rememberme'] == "remember-me") {
+				setcookie("remember",1,time() + 60*60*24*7);
+			}
+
+		}
+		if (isset($_COOKIE["remember"])) {
+			if ($_COOKIE["remember"] == 1) {
+				ini_set('session.gc_maxlifetime',(60*60*24*7));
+			} else {
+				ini_set('session.gc_maflifetime',(60*60));
+			}
+		} else {
+			ini_set('session.gc_maflifetime',(60*60));
+		}
 		session_start();
 		$userArray = getUser($_POST['usr_email'], $_POST['usr_password']);
 		$_SESSION['usr_id'] = $userArray['usr_id'];
 		$_SESSION['usr_name'] = $userArray['usr_name'];
 		$_SESSION['usr_password'] = $userArray['usr_password'];
 		$_SESSION['usr_email'] = $userArray['usr_email'];
-		if ($_POST['rememberme'] == "remember-me") {
-			setcookie('usr_id',$_SESSION['usr_id'],time() + 60*60*24*7);
-			setcookie('usr_name',$_SESSION['usr_name'],time() + 60*60*24*7);
-			setcookie('usr_password',$_SESSION['usr_password'],time() + 60*60*24*7);
-			setcookie('usr_email',$_SESSION['usr_email'],time() + 60*60*24*7);
-		}
 		header("Location: index.php");
 	}
 } else {

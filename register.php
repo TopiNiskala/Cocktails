@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		process_new_user($user);
 	}
 } else {
+	$user = new User(0, "", "", "");
 	$form_errors = array();
 }
 ?>

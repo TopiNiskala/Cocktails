@@ -13,13 +13,15 @@ function build_header($this_site) {
 		$index = "";
 		$list = "";
 		$create = " class='active'";
+	} else if ($this_site == "update") {
+		$index = "";
+		$list = "";
+		$create = "";
 	}
 
 	$usrname = "";
 	if (isset($_SESSION['usr_name'])) {
 		$usrname = $_SESSION['usr_name'];
-	} else if (isset($_COOKIE['usr_name'])) {
-		$usrname = $_COOKIE['usr_name'];
 	}
 
 	print "<!DOCTYPE html>\n";

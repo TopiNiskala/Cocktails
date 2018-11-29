@@ -49,13 +49,14 @@ class CocktailPDO {
 
 	//Update a single cocktail in the database.
 	function update() {
-		$sql = "UPDATE cocktail SET ct_name=:ct_name, ct_glass=:ct_glass, ct_garnish=:ct_garnish, ct_image=:ct_image, ct_preparation=:ct_preparation";
+		$sql = "UPDATE cocktail SET ct_name=:ct_name, ct_glass=:ct_glass, ct_garnish=:ct_garnish, ct_image=:ct_image, ct_preparation=:ct_preparation WHERE ct_id = :ct_id";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->bindValue(':ct_name', $this->ct_name);
 		$stmt->bindValue(':ct_glass', $this->ct_glass);
 		$stmt->bindValue(':ct_garnish', $this->ct_garnish);
 		$stmt->bindValue(':ct_image', $this->ct_image);
 		$stmt->bindValue(':ct_preparation', $this->ct_preparation);
+		$stmt->bindValue(':ct_id', $this->ct_id);
 		if ($stmt->execute()) {
 			return true;
 		}

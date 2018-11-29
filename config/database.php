@@ -9,7 +9,7 @@ class Database {
 	private $host = "localhost";
 	private $db_name = "php";
 	private $username = "topi";
-	private $password = "Tribantura";
+	private $password = "skidoo23";
 
 	public $conn;
 
