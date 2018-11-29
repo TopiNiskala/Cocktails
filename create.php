@@ -1,26 +1,47 @@
 <?php
+	ini_set('session.gc_maxlifetime',86400);
+	require __DIR__ . "/object/cocktail.php";
+	session_start();
 	require "builder.php";
 	require "validator.php";
 	require "processor.php";
-	require __DIR__ . "/object/cocktail.php";
-
-	ini_set('session.gc_maxlifetime',600);
-	session_start();
+	$correct = 0;
+	if (isset($_SESSION['usr_name']) && isset($_SESSION['usr_password'])) {
+		$correct = checkLogin($_SESSION['usr_name'], $_SESSION['usr_password']);
+	}
+	if (isset($_COOKIE['usr_name']) && isset($_COOKIE['usr_password'])) {
+		$correct = checkLogin($_COOKIE['usr_name'], $_COOKIE['usr_password']);
+	}
+	if ($correct == 0) {
+		header("Location: logout.php");
+	}
 
 	$default_ingredients = array();
 	$glass = array(
-			'Cocktail Glass' => 'Cocktail Glass',
-			'Old Fashioned Glass' => 'Old Fashioned Glass',
-			'Highball Glass' => 'Highball Glass',
-			'Collins Glass' => 'Collins Glass',
-			'Shot Glass' => 'Shot Glass',
+			'Absinthe Glass' => 'Absinthe Glass',
+			'Beer Stein' => 'Beer Stein',
+			'Chalice' => 'Chalice',
+			'Champagne Coupe' => 'Champagne Coupe',
 			'Champagne Flute' => 'Champagne Flute',
-			'Irish Coffee Mug' => 'Irish Coffee Mug',
-			'Wine Glass' => 'Wine Glass',
+			'Cocktail Glass' => 'Cocktail Glass',
+			'Collins Glass' => 'Collins Glass',
+			'Glencairn Whiskey Glass' => 'Glencairn Whiskey Glass',
+			'Highball Glass' => 'Highball Glass',
+			'Hurricane Glass' => 'Hurricane Glass',
 			'Margarita Glass' => 'Margarita Glass',
-			'Copper Mug' => 'Copper Mug',
-			'Poco' => 'Poco',
-			'Hurricane Glass' => 'Hurricane Glass'
+			'Old Fashioned Glass' => 'Old Fashioned Glass',
+			'Pilsner Glass' => 'Pilsner Glass',
+			'Pint Glass' => 'Pint Glass',
+			'Pony Glass' => 'Pony Glass',
+			'Sherry Glass' => 'Sherry Glass',
+			'Shot Glass' => 'Shot Glass',
+			'Snifter' => 'Snifter',
+			'Table Glass' => 'Table Glass',
+			'Tankard' => 'Tankard',
+			'Wheat Beer Glass' => 'Wheat Beer Glass',
+			'Wine Glass' => 'Wine Glass',
+			'Yardglass' => 'Yardglass',
+			'Special' => 'Special (Define in the preparation)'
 	);
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -112,7 +133,7 @@
 										if ($option == $cocktail->ct_glass) {
 											print " selected";
 										}
-										print "> $label</option>\n";
+										print ">" . $label . "</option>\n";
 									}
 								?>
 							</select>

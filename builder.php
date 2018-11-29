@@ -15,6 +15,13 @@ function build_header($this_site) {
 		$create = " class='active'";
 	}
 
+	$usrname = "";
+	if (isset($_SESSION['usr_name'])) {
+		$usrname = $_SESSION['usr_name'];
+	} else if (isset($_COOKIE['usr_name'])) {
+		$usrname = $_COOKIE['usr_name'];
+	}
+
 	print "<!DOCTYPE html>\n";
 	print "<html lang='en'>\n";
 	print "<head>\n";
@@ -40,6 +47,10 @@ function build_header($this_site) {
 	print "\t\t\t\t\t<li" . $index  .  "><a href='index.php'>Home</a></li>\n";
 	print "\t\t\t\t\t<li" . $list . "><a href='list.php'>List</a></li>\n";
 	print "\t\t\t\t\t<li" . $create . "><a href='create.php'>Create</a></li>\n";
+	print "\t\t\t\t</ul>\n";
+	print "\t\t\t\t<ul class='nav navbar-nav navbar-right'>\n";
+	print "\t\t\t\t\t<li><p class='navbar-text'>Logged in as: " . $usrname . "</p></li>\n";
+	print "\t\t\t\t\t<li><a href='logout.php'>Log Out</a></li>\n";
 	print "\t\t\t\t</ul>\n";
 	print "\t\t\t</div>\n";
 	print "\t\t</nav>\n";

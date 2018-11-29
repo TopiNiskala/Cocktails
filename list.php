@@ -1,7 +1,19 @@
 <?php
+	ini_set('session.gc_maxlifetime',86400);
+	require __DIR__ . "/object/cocktail.php";
+	session_start();
 	require "builder.php";
 	require "processor.php";
-	require __DIR__ . "/object/cocktail.php";
+	$correct = 0;
+	if (isset($_SESSION['usr_name']) && isset($_SESSION['usr_password'])) {
+		$correct = checkLogin($_SESSION['usr_name'], $_SESSION['usr_password']);
+	}
+	if (isset($_COOKIE['usr_name']) && isset($_COOKIE['usr_password'])) {
+		$correct = checkLogin($_COOKIE['usr_name'], $_COOKIE['usr_password']);
+	}
+	if ($correct == 0) {
+		header("Location: logout.php");
+	}
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		process_delete($_POST['ct_id']);

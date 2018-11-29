@@ -1,7 +1,32 @@
 <?php
 function validate_form() {
 	$errors = array();
-	$glass = array("Cocktail Glass","Old Fashioned Glass","Highball Glass","Collins Glass","Shot Glass","Champagne Flute","Irish Coffee Mug","Wine Glass","Margarita Glass","Copper Mug","Poco","Hurricane Glass");
+	$glass = array(
+			'Absinthe Glass' => 'Absinthe Glass',
+			'Beer Stein' => 'Beer Stein',
+			'Chalice' => 'Chalice',
+			'Champagne Coupe' => 'Champagne Coupe',
+			'Champagne Flute' => 'Champagne Flute',
+			'Cocktail Glass' => 'Cocktail Glass',
+			'Collins Glass' => 'Collins Glass',
+			'Glencairn Whiskey Glass' => 'Glencairn Whiskey Glass',
+			'Highball Glass' => 'Highball Glass',
+			'Hurricane Glass' => 'Hurricane Glass',
+			'Margarita Glass' => 'Margarita Glass',
+			'Old Fashioned Glass' => 'Old Fashioned Glass',
+			'Pilsner Glass' => 'Pilsner Glass',
+			'Pint Glass' => 'Pint Glass',
+			'Pony Glass' => 'Pony Glass',
+			'Sherry Glass' => 'Sherry Glass',
+			'Shot Glass' => 'Shot Glass',
+			'Snifter' => 'Snifter',
+			'Table Glass' => 'Table Glass',
+			'Tankard' => 'Tankard',
+			'Wheat Beer Glass' => 'Wheat Beer Glass',
+			'Wine Glass' => 'Wine Glass',
+			'Yardglass' => 'Yardglass',
+			'Special' => 'Special'
+	);
 	$unit = array("cl","Dashes","Splashes","Whole","Drops","Teaspoons");
 
 	//Check if ct_name is valid through Regex
@@ -71,8 +96,6 @@ function validate_new_user() {
 
 	$userCheck = new UserPDO($db);
 	$stmt = $userCheck->read_users();
-	print_r($stmt);
-
 	$errors = array();
 
 	//Validate new user. Only letters and numbers, no special characters or whitepaces. 20 letters max.
@@ -105,6 +128,28 @@ function validate_new_user() {
 	$email = $_POST['usr_email'];
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		$errors["usr_email_not_valid"] = "Email must be a valid email address.";
+	}
+	return $errors;
+}
+
+function login_user() {
+	require_once __DIR__ . "/config/database.php";
+	require_once __DIR__ . "/object/userpdo.php";
+	$database = new Database();
+	$db = $database->getConnection();
+
+	$userCheck = new UserPDO($db);
+	$stmt = $userCheck->read_users();
+	$errors = array();
+	
+	$ok = 0;
+	foreach ($stmt as $testuser) {
+		if ($_POST['usr_email'] == $testuser['usr_email'] && $_POST['usr_password'] == $testuser['usr_password']) {
+			$ok = 1;
+		}
+	}
+	if ($ok == 0) {
+			$errors["invalid_login"] = "Invalid email or password.";
 	}
 	return $errors;
 }

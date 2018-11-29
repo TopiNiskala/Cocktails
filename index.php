@@ -1,6 +1,18 @@
 <?php
+	ini_set('session.gc_maxlifetime',86400);
+	session_start();
+	require "processor.php";
+	$correct = 0;
+	if (isset($_SESSION['usr_name']) && isset($_SESSION['usr_password'])) {
+		$correct = checkLogin($_SESSION['usr_name'], $_SESSION['usr_password']);
+	}
+	if (isset($_COOKIE['usr_name']) && isset($_COOKIE['usr_password'])) {
+		$correct = checkLogin($_COOKIE['usr_name'], $_COOKIE['usr_password']);
+	}
+	if ($correct == 0) {
+		header("Location: logout.php");
+	}
 	require "builder.php";
-
 	$this_site = "index";
 	build_header($this_site);
 ?>
@@ -26,11 +38,12 @@
 					<li class='list-group-item'>Possibility to delete cocktails from the list.</li>
 					<li class='list-group-item'>SESSION implemented and basic cocktail glass added next to cocktail-pdo class.</li>
 					<li class='list-group-item'>Cancel button for new cocktails.</li>
+					<li class='list-group-item'>Login with session. Session length 24h. Logout. Register. Validations for these.</li>
+					<li class='list-group-item'>If user checks remember me, program hands a one week long cookie, otherwise use session (24h).</li>
 				</ul>
 				<h5>List of to-do parts: </h5>
 				<ul>
 					<li class='list-group-item'>New page for editing/updating cocktail data. (and move delete button there)</li>
-					<li class='list-group-item'>Login, register, cookies. Possibly with pure PHP or with a framework like PHP-Auth.</li>
 					<li class='list-group-item'>Separate database for each user with possibility to add IBA official list to user accounts database.</li>
 					<li class='list-group-item'>Possibility for users to save their own pictures of cocktails to system.</li>
 				</ul><br><br>

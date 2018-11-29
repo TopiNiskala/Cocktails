@@ -32,12 +32,23 @@ class UserPDO {
 		return false;
 	}
 
-	//Fetch a single user from the database.
+	//Fetch all users from the database.
 	function read_users() {
 		$sql = "SELECT * FROM user";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		return $data;
+	}
+
+	//Fetch single user.
+	function getOne($email, $password) {
+		$sql = "SELECT * FROM user WHERE usr_email=:email AND usr_password=:password";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->bindValue(':email', $email);
+		$stmt->bindValue(':password', $password);
+		$stmt->execute();
+		$data = $stmt->fetch(PDO::FETCH_ASSOC);
 		return $data;
 	}
 }

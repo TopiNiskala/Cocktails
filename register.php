@@ -31,20 +31,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		<form class="form-signin" method="post">
 			<h1 class="h3 mb-3 font-weight-normal">Create new account</h1>
 			<label for="inputName" class="sr-only">Name</label>
-			<input type="text" id="usr_name" name="usr_name" class="form-control" placeholder="Username" required>
+			<input type="text" id="usr_name" name="usr_name" class="form-control" placeholder="Username" value=<?php print "'" . htmlentities($user->usr_name) . "'" ?> required>
 			<div style="color:red;">
 			<?php
 				if (array_key_exists("usr_name_not_valid", $form_errors)) {
 					print $form_errors["usr_name_not_valid"];
+				} else if (array_key_exists("usr_name_taken", $form_errors)) {
+					print $form_errors["usr_name_taken"];
 				}
 			?>
 			</div>
 			<label for="inputEmail" class="sr-only">Email</label>
-			<input type="email" id="usr_email" name="usr_email" class="form-control" placeholder="Email" required>
+			<input type="email" id="usr_email" name="usr_email" class="form-control" placeholder="Email" value=<?php print "'" . htmlentities($user->usr_email) . "'" ?> required>
 			<div style="color:red;">
 			<?php
 				if (array_key_exists("usr_email_not_valid", $form_errors)) {
 					print $form_errors["usr_email_not_valid"];
+				} else if (array_key_exists("usr_email_taken", $form_errors)) {
+					print $form_errors["usr_email_taken"];
 				}
 			?>
 			</div>
@@ -54,6 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<?php
 				if (array_key_exists("usr_password_not_valid", $form_errors)) {
 					print $form_errors["usr_password_not_valid"];
+				} else if (array_key_exists("usr_password_too_short", $form_errors)) {
+					print $form_errors["usr_password_too_short"];
 				}
 			?>
 			</div>

@@ -60,6 +60,34 @@ function process_list() {
 	return $stmt;
 }
 
+function getUser($email, $password) {
+	require_once __DIR__ . "/config/database.php";
+	require_once __DIR__ . "/object/userpdo.php";
+	$database = new Database();
+	$db = $database->getConnection();
+
+	$user = new UserPDO($db);
+	$stmt = $user->getOne($email, $password);
+	return $stmt;
+}
+
+function checkLogin($usr_name, $usr_password) {
+	require_once __DIR__ . "/config/database.php";
+	require_once __DIR__ . "/object/userpdo.php";
+	$database = new Database();
+	$db = $database->getConnection();
+
+	$user = new UserPDO($db);
+	$stmt = $user->read_users();
+	$check = 0;
+	foreach($stmt as $chkUser) {
+		if ($chkUser['usr_name'] == $usr_name && $chkUser['usr_password'] == $usr_password) {
+			$check = 1;
+		}
+	}
+	return $check;
+}
+
 function process_delete($del_id) {
 	require_once __DIR__ . "/config/database.php";
 	require_once __DIR__ . "/object/cocktailpdo.php";
